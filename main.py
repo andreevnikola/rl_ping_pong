@@ -83,6 +83,11 @@ def ball_restart():
     ball_speedy *= random.choice((1, -1))
     ball_speedx *= random.choice((1, -1))
 
+def game_over(winner: int):
+    player1_score = 0
+    player2_score = 0
+    print(f"Player {winner} wins!")
+    time.sleep(2)
 
 # Font variable
 font = pygame.font.SysFont("calibri", 25)
@@ -117,6 +122,12 @@ while True:
         player1_score += 1
     elif ball.x > width:
         player2_score += 1
+
+    # checking for winner
+    if player1_score >= 5:
+        game_over(1)
+    elif player2_score >= 5:
+        game_over(2)
 
     # Visuals
     screen.fill((0, 0, 0))
